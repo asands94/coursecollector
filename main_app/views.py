@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
-from .models import Course
+from .models import Course, Category
 
 # Create your views here.
 def home(request):
@@ -29,6 +29,22 @@ class CourseDelete(DeleteView):
     model = Course
     # https://docs.djangoproject.com/en/5.0/ref/urlresolvers/#reverse-lazy
     success_url = reverse_lazy('course_index')
+
+class CategoryList(ListView):
+    model = Category
+
+class CategoryCreate(CreateView):
+    model = Category
+    fields = '__all__'
+
+class CategoryUpdate(UpdateView):
+    model = Category
+    fields = '__all__'
+
+class CategoryDelete(DeleteView):
+    model = Category
+    # https://docs.djangoproject.com/en/5.0/ref/urlresolvers/#reverse-lazy
+    success_url = reverse_lazy('category_index')
 
 # class CourseCreate(CreateView):
 #     def add_image(request):
