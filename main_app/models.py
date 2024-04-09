@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 RATINGS=(
+    ('-', 'Not Yet Rated'),
     ('1', 'Awful'),
     ('2', 'Bad'),
     ('3', 'Decent'),
