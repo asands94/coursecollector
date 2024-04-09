@@ -2,8 +2,12 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-CATEGORIES=(
-    ()
+RATINGS=(
+    ('1', 'Awful'),
+    ('2', 'Bad'),
+    ('3', 'Decent'),
+    ('4', 'Pretty Good'),
+    ('5', 'Amazing')
 )
 
 # Create your models here.
@@ -18,11 +22,12 @@ class Category(models.Model):
 
 
 class Course(models.Model):
-    image = models.CharField('image url', max_length=100 )
+    image = models.CharField('image url', help_text="*optional", max_length=100, null=True, blank=True)
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
-    price = models.IntegerField()
+    price = models.DecimalField(max_digits=5, decimal_places=2)
     category = models.ManyToManyField(Category)
+    rating = models.CharField(max_length=1, choices=RATINGS, default=RATINGS[0][0])
 
     def __str__(self):
         return self.name

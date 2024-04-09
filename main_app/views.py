@@ -19,7 +19,7 @@ class CourseDetail(DetailView):
 
 class CourseCreate(CreateView):
     model = Course
-    fields = ['image', 'name', 'description', 'price']
+    fields = ['image', 'name', 'description', 'price', 'rating']
 
 class CourseUpdate(UpdateView):
     model = Course
