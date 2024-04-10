@@ -54,7 +54,7 @@ class CourseCreate(LoginRequiredMixin,CreateView):
 class CourseUpdate(LoginRequiredMixin,UpdateView):
     model = Course
     template_name = 'course/course_form.html'
-    fields = ['image', 'name', 'description', 'price']
+    fields = ['image', 'name', 'url', 'description', 'price', 'recurring_fee', 'rating']
 
 class CourseDelete(LoginRequiredMixin,DeleteView):
     model = Course
