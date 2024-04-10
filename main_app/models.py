@@ -36,7 +36,7 @@ class Course(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    category = models.ManyToManyField(Category, null=True, blank=True)
+    category = models.ManyToManyField(Category, blank=True)
     recurring_fee = models.CharField(max_length=1, choices=RECURRING, default=RECURRING[0][0])
     rating = models.CharField(max_length=1, choices=RATINGS, default=RATINGS[0][0])
     url = models.CharField(max_length=100)
@@ -58,3 +58,17 @@ class Goal(models.Model):
 
     def get_absolute_url(self):
         return reverse('goal', kwargs={'pk': self.id})
+    
+class Note(models.Model):
+    content = models.TextField(max_length=250)
+    date = models.DateField()
+    courses = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"This note was made on {self.date}"
+    
+    def get_absolute_url(self):
+        return(reverse('course_detail', kwargs={'pk': self.courses.pk}))
+    
+    class Meta:
+        ordering = ['-date']

@@ -3,7 +3,7 @@
 <h1>{{ course.name }}</h1>
 
 <div class="row">
-  <div class="col s6 col-offset-3">
+  <div class="col s6">
     <div class="card">
       <div class="card-content">
         {% if course.image %}
@@ -27,6 +27,39 @@
       </div>
     </div>
   </div>
+  <div class="col s6">
+    <form method="POST" action="{%url 'add_note' course.id %}">
+      {%csrf_token%} {{note_form.as_p}}
+      <input type="submit" class="btn yellow darken-3" value="Add Note" />
+    </form>
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for note in course.note_set.all %}
+        <tr>
+          <td>{{note.date}}</td>
+          <td>{{note.content}}</td>
+          <td><a href="{% url 'note_update' note.id %}">Edit</a></td>
+          <td><a href="{% url 'note_delete' note.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
+<script>
+  const dateEl = document.getElementById('id_date')
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true,
+  })
+</script>
 
 {% endblock %}

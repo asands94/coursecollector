@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
-from .models import Goal, Category, Course
+from .models import Goal, Category, Course, Note
 
 # https://docs.djangoproject.com/en/5.0/topics/auth/customizing/#extending-the-existing-user-model
 
@@ -20,3 +20,4 @@ admin.site.register(User, UserAdmin)
 admin.site.register(Category) 
 admin.site.register(Course)
 admin.site.register(Goal)
+admin.site.register(Note)

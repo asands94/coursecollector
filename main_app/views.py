@@ -2,18 +2,16 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
-from .models import Course, Category, Goal, User
+from .models import Course, Category, Goal, User, Note
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import GoalForm
+from .forms import GoalForm, NoteForm
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
 
-def about(request):
-    return render(request, 'about.html')
 
 def signup(request):
   error_message = ''
@@ -41,6 +39,22 @@ class CourseList(LoginRequiredMixin,ListView):
 class CourseDetail(LoginRequiredMixin,DetailView):
     model = Course
     template_name = 'course/course_detail.html'
+
+    # make sure NoteForm is passed to the view
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['note_form'] = NoteForm()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        course = self.get_object()  
+        form = NoteForm(request.POST) 
+
+        if form.is_valid():
+            note_text = form.cleaned_data['content']
+            date_text = form.cleaned_data['date']
+            Note.objects.create(courses=course, content=note_text, date=date_text)
+        return redirect('course_detail', pk=course.pk)
 
 class CourseCreate(LoginRequiredMixin,CreateView):
     model = Course
@@ -111,5 +125,14 @@ class GoalUpdate(LoginRequiredMixin,UpdateView):
     def get_success_url(self):
         return reverse_lazy('goal', kwargs={'pk': self.request.user.pk})
 
+class NoteUpdate(LoginRequiredMixin,UpdateView):
+    model = Note
+    template_name = 'note/note_form.html'
+    fields = ['content', 'date']
 
-            
+class NoteDelete(LoginRequiredMixin,DeleteView):
+    model = Note
+    template_name = 'note/note_confirm_delete.html'
+    
+    def get_success_url(self):
+        return reverse_lazy('course_detail', kwargs={'pk': self.object.courses.pk})

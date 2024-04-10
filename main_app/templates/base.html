@@ -24,21 +24,46 @@
   <body>
     <header class="navbar">
       <nav>
-        <div class="nav-wrapper blue darken-3">
-          <a href="{% url 'home' %}" class="brand-logo"
+        <div class="nav-wrapper white">
+          <a href="{% url 'home' %}" class="brand-logo blue-text text-darken-3"
             >&nbsp;&nbsp;Course Collector</a
           >
           <a href="#" data-target="mobile" class="sidenav-trigger"
-            ><i class="material-icons">menu</i></a
+            ><i class="material-icons blue-text text-darken-3">menu</i></a
           >
           <ul class="right hide-on-med-and-down">
-            <li><a href="/about">About</a></li>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'course_create' %}">Add a Course</a></li>
-            <li><a href="{% url 'course_index' %}">All Courses</a></li>
-            <li><a href="{% url 'category_create' %}">Add a Category</a></li>
-            <li><a href="{% url 'category_index' %}">All Categories</a></li>
-            <li><a href="{% url 'goal' user.id %}">Goal</a></li>
+            <li>
+              <a
+                href="{% url 'course_create' %}"
+                class="blue-text text-darken-3"
+                >Add a Course</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'course_index' %}" class="blue-text text-darken-3"
+                >All Courses</a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'category_create' %}"
+                class="blue-text text-darken-3"
+                >Add a Category</a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'category_index' %}"
+                class="blue-text text-darken-3"
+                >All Categories</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'goal' user.id %}" class="blue-text text-darken-3"
+                >Goal</a
+              >
+            </li>
             <li>
               <form method="POST" action="{% url 'logout' %}">
                 {% csrf_token%}
@@ -46,29 +71,59 @@
                   type="submit"
                   value="Logout"
                   class="btn yellow darken-3"
-                />
+                />&nbsp;&nbsp;
               </form>
             </li>
             {% else %}
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            <li><a href="{% url 'login' %}">Log In</a></li>
+            <li>
+              <a href="{% url 'signup' %}" class="blue-text text-darken-3"
+                >Sign Up</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'login' %}" class="blue-text text-darken-3"
+                >Log In</a
+              >
+            </li>
             {% endif %}
           </ul>
         </div>
       </nav>
 
       <ul class="sidenav" id="mobile">
-        <li><a href="/about">About</a></li>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'course_create' %}">Add a Course</a></li>
-        <li><a href="{% url 'course_index' %}">All Courses</a></li>
-        <li><a href="{% url 'category_create' %}">Add a Category</a></li>
-        <li><a href="{% url 'category_index' %}">All Categories</a></li>
-        <li><a href="{% url 'goal' user.id %}">Goal</a></li>
+        <li>
+          <a href="{% url 'course_create' %}" class="blue-text text-darken-3"
+            >Add a Course</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'course_index' %}" class="blue-text text-darken-3"
+            >All Courses</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'category_create' %}" class="blue-text text-darken-3"
+            >Add a Category</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'category_index' %}" class="blue-text text-darken-3"
+            >All Categories</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'goal' user.id %}" class="blue-text text-darken-3"
+            >Goal</a
+          >
+        </li>
         <li>
           <form method="POST" action="{% url 'logout' %}">
-            {% csrf_token%}
-            <input type="submit" value="Logout" class="btn yellow darken-3" />
+            {% csrf_token%} &nbsp;&nbsp;<input
+              type="submit"
+              value="Logout"
+              class="btn yellow darken-3"
+            />
           </form>
         </li>
         {% else %}
@@ -78,11 +133,6 @@
       </ul>
     </header>
     <main class="container">{% block content %} {% endblock %}</main>
-    <!-- <footer class="page-footer blue darken-3">
-      <div class="right">
-        All Rights Reserved, &copy; 2024 Course Collector &nbsp;
-      </div>
-    </footer> -->
     <footer class="page-footer blue darken-3">
       <div class="container">
         <div class="row">
@@ -95,11 +145,6 @@
               <li>
                 <a class="grey-text text-lighten-3" href="{%url 'home' %}"
                   >Home</a
-                >
-              </li>
-              <li>
-                <a class="grey-text text-lighten-3" href="{%url 'about' %}"
-                  >About</a
                 >
               </li>
             </ul>
