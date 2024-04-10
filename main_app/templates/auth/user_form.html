@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% block content %} {% if user.profile.goal %}
-<h1>Edit <span class="teal-text">{{user.profile.goal}}</span></h1>
+{% extends 'base.html' %} {% block content %} {% if user.goal.name %}
+<h1>Edit <span class="teal-text">Goal</span></h1>
 {% else %}
 <h1>Add Goal</h1>
 {% endif %}

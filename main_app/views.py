@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
-from .models import Course, Category, Profile, User
+from .models import Course, Category, Goal, User
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import ProfileForm
+from .forms import GoalForm
 
 # Create your views here.
 def home(request):
@@ -77,35 +77,29 @@ class CategoryDelete(LoginRequiredMixin,DeleteView):
     # https://docs.djangoproject.com/en/5.0/ref/urlresolvers/#reverse-lazy
     success_url = reverse_lazy('category_index')
 
-class ProfileDetail(LoginRequiredMixin,DetailView):
+class GoalDetail(LoginRequiredMixin,DetailView):
     model = User
 
-class ProfileCreate(LoginRequiredMixin,CreateView):
-    model = Profile
+class GoalCreate(LoginRequiredMixin,CreateView):
+    model = Goal
     template_name = 'auth/user_form.html'
-    form_class = ProfileForm
+    form_class = GoalForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
     
     def get_success_url(self):
-        return reverse_lazy('profile', kwargs={'pk': self.request.user.pk})
+        return reverse_lazy('goal', kwargs={'pk': self.request.user.pk})
 
-class ProfileUpdate(LoginRequiredMixin,UpdateView):
-    model = Profile
+class GoalUpdate(LoginRequiredMixin,UpdateView):
+    model = Goal
     template_name = 'auth/user_form.html'
-    form_class = ProfileForm
+    form_class = GoalForm
 
     def get_success_url(self):
-        return reverse_lazy('profile', kwargs={'pk': self.request.user.pk})
+        return reverse_lazy('goal', kwargs={'pk': self.request.user.pk})
 
-# class ProfileDelete(LoginRequiredMixin,DeleteView):
-#     model = Profile
-#     template_name = 'auth/profile_confirm_delete.html'
-    
-#     def get_success_url(self):
-#         return reverse_lazy('profile', kwargs={'pk': self.request.user.pk})
 
 # class CourseCreate(CreateView):
 #     def add_image(request):

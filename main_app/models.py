@@ -39,9 +39,9 @@ class Course(models.Model):
         return reverse('course_detail', kwargs={'pk': self.id})
     
 
-class Profile(models.Model):
+class Goal(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    goal = models.TextField(max_length=250)
+    name = models.TextField(max_length=250)
 
     def get_absolute_url(self):
-        return reverse('profile', kwargs={'pk': self.id})
+        return reverse('goal', kwargs={'pk': self.id})

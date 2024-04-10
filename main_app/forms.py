@@ -1,7 +1,7 @@
 from django import forms
-from .models import Profile
+from .models import Goal
 
-class ProfileForm(forms.ModelForm):
+class GoalForm(forms.ModelForm):
     class Meta:
-        model = Profile
-        fields = ['goal']
+        model = Goal
+        fields = ['name']
