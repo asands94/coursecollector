@@ -20,7 +20,7 @@ class Category(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('category_detail', kwargs={'pk': self.id})
+        return reverse('category_index')
 
 
 class Course(models.Model):

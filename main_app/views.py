@@ -61,11 +61,15 @@ class CategoryList(LoginRequiredMixin,ListView):
 
 class CategoryCreate(LoginRequiredMixin,CreateView):
     model = Category
-    fields = '__all__'
+    fields = ['name']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class CategoryUpdate(LoginRequiredMixin,UpdateView):
     model = Category
-    fields = '__all__'
+    fields = ['name']
 
 class CategoryDelete(LoginRequiredMixin,DeleteView):
     model = Category
