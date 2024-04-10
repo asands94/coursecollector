@@ -45,7 +45,7 @@ class CourseDetail(LoginRequiredMixin,DetailView):
 class CourseCreate(LoginRequiredMixin,CreateView):
     model = Course
     template_name = 'course/course_form.html'
-    fields = ['image', 'name', 'description', 'price', 'rating']
+    fields = ['image', 'name', 'description', 'price', 'recurring_fee', 'rating']
 
     def form_valid(self, form):
         form.instance.user = self.request.user

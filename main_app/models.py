@@ -11,6 +11,11 @@ RATINGS=(
     ('5', 'Amazing')
 )
 
+RECURRING=(
+    ('Y', 'Yes'),
+    ('N', 'No'),
+)
+
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -32,6 +37,7 @@ class Course(models.Model):
     description = models.TextField(max_length=250)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     category = models.ManyToManyField(Category)
+    recurring_fee = models.CharField(max_length=1, choices=RECURRING, default=RECURRING[0][0])
     rating = models.CharField(max_length=1, choices=RATINGS, default=RATINGS[0][0])
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
