@@ -12,3 +12,11 @@ footer.page-footer {
   padding-top: 0;
   text-align: right;
 }
+
+li > span {
+  color: #0277bd !important;
+}
+
+input:focus {
+  border-bottom-color: #0277bd !important;
+}

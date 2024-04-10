@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% if object %}
-<h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+<h1>Edit <span class="yellow-text text-darken-3">{{object.name}}</span></h1>
 {% else %}
 <h1>Add Course</h1>
 {% endif %}
@@ -9,7 +9,7 @@
   <table>
     {{ form.as_table }}
   </table>
-  <input type="submit" value="Submit" class="btn" />
+  <input type="submit" value="Submit" class="btn yellow darken-3" />
 </form>
 
 <script>
