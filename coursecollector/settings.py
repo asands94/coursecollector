@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'coursecollector.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'course_collector',
+        'NAME': 'coursecollector',
     }
 }
 

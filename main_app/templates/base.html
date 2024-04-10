@@ -35,6 +35,7 @@
             <li><a href="{% url 'course_index' %}">All Courses</a></li>
             <li><a href="{% url 'category_create' %}">Add a Category</a></li>
             <li><a href="{% url 'category_index' %}">All Categories</a></li>
+            <li><a href="{% url 'profile' user.id %}">Profile</a></li>
             <li>
               <form method="POST" action="{% url 'logout' %}">
                 {% csrf_token%}
