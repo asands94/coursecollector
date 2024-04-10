@@ -30,10 +30,20 @@
           </ul>
           <ul class="right">
             <li><a href="/about">About</a></li>
+            {% if user.is_authenticated %}
             <li><a href="{% url 'course_create' %}">Add a Course</a></li>
             <li><a href="{% url 'course_index' %}">All Courses</a></li>
             <li><a href="{% url 'category_create' %}">Add a Category</a></li>
             <li><a href="{% url 'category_index' %}">All Categories</a></li>
+            <li>
+              <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token%}
+                <input type="submit" value="Logout" class="btn" />
+              </form>
+            </li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
           </ul>
         </div>
       </nav>
