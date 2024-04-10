@@ -36,7 +36,7 @@ class Course(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    category = models.ManyToManyField(Category)
+    category = models.ManyToManyField(Category, null=True, blank=True)
     recurring_fee = models.CharField(max_length=1, choices=RECURRING, default=RECURRING[0][0])
     rating = models.CharField(max_length=1, choices=RATINGS, default=RATINGS[0][0])
     url = models.CharField(max_length=100)

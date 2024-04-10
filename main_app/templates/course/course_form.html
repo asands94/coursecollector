@@ -13,10 +13,13 @@
 </form>
 
 <script>
-  const selectEl = document.getElementById('id_rating')
-  M.FormSelect.init(selectEl)
+  const ratingEl = document.getElementById('id_rating')
+  M.FormSelect.init(ratingEl)
 
-  const chooseEl = document.getElementById('id_recurring_fee')
-  M.FormSelect.init(chooseEl)
+  const recurringEl = document.getElementById('id_recurring_fee')
+  M.FormSelect.init(recurringEl)
+
+  const categoryEl = document.getElementById('id_category')
+  M.FormSelect.init(categoryEl)
 </script>
 {% endblock %}

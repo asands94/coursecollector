@@ -45,7 +45,7 @@ class CourseDetail(LoginRequiredMixin,DetailView):
 class CourseCreate(LoginRequiredMixin,CreateView):
     model = Course
     template_name = 'course/course_form.html'
-    fields = ['image', 'name', 'url', 'description', 'price', 'recurring_fee', 'rating']
+    fields = ['image', 'name', 'url', 'description', 'price', 'recurring_fee', 'rating', 'category']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -54,7 +54,7 @@ class CourseCreate(LoginRequiredMixin,CreateView):
 class CourseUpdate(LoginRequiredMixin,UpdateView):
     model = Course
     template_name = 'course/course_form.html'
-    fields = ['image', 'name', 'url', 'description', 'price', 'recurring_fee', 'rating']
+    fields = ['image', 'name', 'url', 'description', 'price', 'recurring_fee', 'rating', 'category']
 
 class CourseDelete(LoginRequiredMixin,DeleteView):
     model = Course

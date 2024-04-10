@@ -13,6 +13,15 @@
         <p>Rating: {{course.get_rating_display}}</p>
         <p>Cost: ${{course.price}}</p>
         <p>Recurring Fee?: {{course.get_recurring_fee_display}}</p>
+
+
+        {% if course.category.count %}
+        Category:
+        {% endif %}
+       
+        {% for category in course.category.all %}
+        {{category.name}}</p>
+        {% endfor %}
       </div>
       <div class="card-action">
         <a href="{{course.url}}" target="_blank">Visit</a>
