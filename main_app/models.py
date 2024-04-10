@@ -39,6 +39,7 @@ class Course(models.Model):
     category = models.ManyToManyField(Category)
     recurring_fee = models.CharField(max_length=1, choices=RECURRING, default=RECURRING[0][0])
     rating = models.CharField(max_length=1, choices=RATINGS, default=RATINGS[0][0])
+    url = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

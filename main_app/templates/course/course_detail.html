@@ -1,14 +1,21 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Course Details</h1>
+<h1>{{ course.name }} Details</h1>
 
 <div class="row">
   <div class="col s6 col-offset-3">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{ course.name }}</span>
+        {% if course.image %}
+        <img src="{{course.image}}" loading="lazy" class="responsive-img" />
+        {% endif %}
+        <p>{{course.description}}</p>
+        <p>Rating: {{course.get_rating_display}}</p>
+        <p>Cost: ${{course.price}}</p>
+        <p>Recurring Fee?: {{course.get_recurring_fee_display}}</p>
       </div>
       <div class="card-action">
+        <a href="{{course.url}}" target="_blank">Visit</a>
         <a href="{% url 'course_update' course.id %}">Edit</a>
         <a href="{% url 'course_delete' course.id %}">Delete</a>
       </div>
