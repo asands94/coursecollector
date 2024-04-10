@@ -21,6 +21,9 @@ class Category(models.Model):
     
     def get_absolute_url(self):
         return reverse('category_index')
+    
+    class Meta:
+        verbose_name_plural = "Categories"
 
 
 class Course(models.Model):
@@ -42,6 +45,9 @@ class Course(models.Model):
 class Goal(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.TextField(max_length=250)
+
+    def __str__(self):
+        return f"The Goal: {self.name}"
 
     def get_absolute_url(self):
         return reverse('goal', kwargs={'pk': self.id})
