@@ -36,12 +36,15 @@ def signup(request):
 
 class CourseList(LoginRequiredMixin,ListView):
     model = Course
+    template_name = 'course/course_list.html'
 
 class CourseDetail(LoginRequiredMixin,DetailView):
     model = Course
+    template_name = 'course/course_detail.html'
 
 class CourseCreate(LoginRequiredMixin,CreateView):
     model = Course
+    template_name = 'course/course_form.html'
     fields = ['image', 'name', 'description', 'price', 'rating']
 
     def form_valid(self, form):
@@ -50,18 +53,22 @@ class CourseCreate(LoginRequiredMixin,CreateView):
 
 class CourseUpdate(LoginRequiredMixin,UpdateView):
     model = Course
+    template_name = 'course/course_form.html'
     fields = ['image', 'name', 'description', 'price']
 
 class CourseDelete(LoginRequiredMixin,DeleteView):
     model = Course
+    template_name = 'course/course_confirm_delete.html'
     # https://docs.djangoproject.com/en/5.0/ref/urlresolvers/#reverse-lazy
     success_url = reverse_lazy('course_index')
 
 class CategoryList(LoginRequiredMixin,ListView):
     model = Category
+    template_name = 'category/category_list.html'
 
 class CategoryCreate(LoginRequiredMixin,CreateView):
     model = Category
+    template_name = 'category/category_form.html'
     fields = ['name']
 
     def form_valid(self, form):
@@ -70,19 +77,23 @@ class CategoryCreate(LoginRequiredMixin,CreateView):
 
 class CategoryUpdate(LoginRequiredMixin,UpdateView):
     model = Category
+    template_name = 'category/category_form.html'
     fields = ['name']
 
 class CategoryDelete(LoginRequiredMixin,DeleteView):
     model = Category
+    template_name = 'category/category_confirm_delete.html'
     # https://docs.djangoproject.com/en/5.0/ref/urlresolvers/#reverse-lazy
     success_url = reverse_lazy('category_index')
 
 class GoalDetail(LoginRequiredMixin,DetailView):
-    model = User
+    model = Goal
+    template_name = 'goal/goal.html'
 
 class GoalCreate(LoginRequiredMixin,CreateView):
     model = Goal
-    template_name = 'auth/user_form.html'
+    template_name = 'goal/goal_form.html'
+    # https://docs.djangoproject.com/en/5.0/topics/class-based-views/generic-editing/
     form_class = GoalForm
 
     def form_valid(self, form):
@@ -94,23 +105,11 @@ class GoalCreate(LoginRequiredMixin,CreateView):
 
 class GoalUpdate(LoginRequiredMixin,UpdateView):
     model = Goal
-    template_name = 'auth/user_form.html'
+    template_name = 'goal/goal_form.html'
     form_class = GoalForm
 
     def get_success_url(self):
         return reverse_lazy('goal', kwargs={'pk': self.request.user.pk})
 
-
-# class CourseCreate(CreateView):
-#     def add_image(request):
-#         us=Course.objects.get(roll_no=user)
-#         if request.method == 'POST' and request.FILES['myfile'];
-#             myfile = request.FILES['myfile']
-#             fs = FileSystemStorage()
-#             filename = fs.save(myfile.name, myfile)
-#             uploaded_file_url = fs.url(filename)
-#             us.img_link=uploaded_file_url
-#             us.save()
-#             print(uploaded_file_url)
 
             
