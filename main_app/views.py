@@ -114,9 +114,25 @@ class CategoryDelete(LoginRequiredMixin,DeleteView):
     # https://docs.djangoproject.com/en/5.0/ref/urlresolvers/#reverse-lazy
     success_url = reverse_lazy('category_index')
 
+class NoteUpdate(LoginRequiredMixin,UpdateView):
+    model = Note
+    template_name = 'note/note_form.html'
+    fields = ['content', 'date']
+
+class NoteDelete(LoginRequiredMixin,DeleteView):
+    model = Note
+    template_name = 'note/note_confirm_delete.html'
+    
+    def get_success_url(self):
+        return reverse_lazy('course_detail', kwargs={'pk': self.object.courses.pk})
+
 class ProfileDetail(LoginRequiredMixin,ListView):
     model = User
     template_name = 'profile/profile.html'
+
+    def get_queryset(self):
+        print(User.objects.filter(course=5))
+        return User.objects.filter(course=1)
 
 class ProfileCreate(LoginRequiredMixin,CreateView):
     model = Profile
@@ -129,7 +145,7 @@ class ProfileCreate(LoginRequiredMixin,CreateView):
         return super().form_valid(form)
     
     def get_success_url(self):
-        return reverse_lazy('profile', kwargs={'pk': self.request.user.pk})
+        return reverse_lazy('profile')
 
 class ProfileUpdate(LoginRequiredMixin,UpdateView):
     model = Profile
@@ -137,17 +153,19 @@ class ProfileUpdate(LoginRequiredMixin,UpdateView):
     form_class = ProfileForm
 
     def get_success_url(self):
-        return reverse_lazy('profile', kwargs={'pk': self.request.user.pk})
+        return reverse_lazy('profile')
 
-class NoteUpdate(LoginRequiredMixin,UpdateView):
-    model = Note
-    template_name = 'note/note_form.html'
-    fields = ['content', 'date']
+class UsernameUpdate(LoginRequiredMixin,UpdateView):
+    model = User
+    template_name='profile/change_username.html'
+    fields = ['username']
 
-class NoteDelete(LoginRequiredMixin,DeleteView):
-    model = Note
-    template_name = 'note/note_confirm_delete.html'
+    def get_success_url(self):
+        return reverse_lazy('profile')
+    
+class ProfileDelete(LoginRequiredMixin,DeleteView):
+    model = User
+    template_name = 'profile/profile_confirm_delete.html'
     
     def get_success_url(self):
-        return reverse_lazy('course_detail', kwargs={'pk': self.object.courses.pk})
-    
+        return reverse_lazy('home')
