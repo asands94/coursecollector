@@ -12,7 +12,6 @@ from .forms import GoalForm, NoteForm
 def home(request):
     return render(request, 'home.html')
 
-
 def signup(request):
   error_message = ''
   if request.method == 'POST':
@@ -36,9 +35,23 @@ class CourseList(LoginRequiredMixin,ListView):
     model = Course
     template_name = 'course/course_list.html'
 
+    def get_queryset(self):
+        return Course.objects.filter(user=self.request.user)
+
 class CourseDetail(LoginRequiredMixin,DetailView):
     model = Course
     template_name = 'course/course_detail.html'
+    
+    # redirect user to course index if trying to view a course they didn't make
+    def dispatch(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        print(f"SELF.OBJECT: {self.request.user}")
+
+        if self.object.user != self.request.user:
+            return redirect('course_index')
+        
+        return super().dispatch(request, *args, **kwargs)
 
     # make sure NoteForm is passed to the view
     def get_context_data(self, **kwargs):
