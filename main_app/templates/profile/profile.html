@@ -27,7 +27,7 @@
         {% for course in user.course_set.all%} 
           {% if course.recurring_fee == 'Y' %}
           <ul>
-            <li>{{course.name}}</li>
+            <li><a href="{% url 'course_detail' course.id %}">{{course.name}}</a></li>
           </ul>
           {% endif%} 
         {% endfor %}

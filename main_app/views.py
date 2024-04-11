@@ -7,6 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ProfileForm, NoteForm
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def home(request):
@@ -36,7 +37,24 @@ class CourseList(LoginRequiredMixin,ListView):
     template_name = 'course/course_list.html'
 
     def get_queryset(self):
-        return Course.objects.filter(user=self.request.user)
+        category_filtered_queryset = self.category_query(self.request)
+        return category_filtered_queryset.filter(user=self.request.user)
+    
+     # pass in categories to template
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        categories = Category.objects.all()
+        context['categories'] = categories
+        return context
+    
+    def category_query(self, request):
+        q = request.GET.get('q')
+        if q:
+            # find the category by name
+            category_obj = get_object_or_404(Category, name=q)
+            return Course.objects.filter(category=category_obj.pk)
+        else:
+            return Course.objects.all()
 
 class CourseDetail(LoginRequiredMixin,DetailView):
     model = Course
@@ -129,10 +147,6 @@ class NoteDelete(LoginRequiredMixin,DeleteView):
 class ProfileDetail(LoginRequiredMixin,ListView):
     model = User
     template_name = 'profile/profile.html'
-
-    def get_queryset(self):
-        print(User.objects.filter(course=5))
-        return User.objects.filter(course=1)
 
 class ProfileCreate(LoginRequiredMixin,CreateView):
     model = Profile
