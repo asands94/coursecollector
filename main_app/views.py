@@ -46,8 +46,6 @@ class CourseDetail(LoginRequiredMixin,DetailView):
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()
 
-        print(f"SELF.OBJECT: {self.request.user}")
-
         if self.object.user != self.request.user:
             return redirect('course_index')
         
@@ -93,6 +91,9 @@ class CategoryList(LoginRequiredMixin,ListView):
     model = Category
     template_name = 'category/category_list.html'
 
+    def get_queryset(self):
+        return Category.objects.filter(user=self.request.user)
+
 class CategoryCreate(LoginRequiredMixin,CreateView):
     model = Category
     template_name = 'category/category_form.html'
@@ -114,7 +115,7 @@ class CategoryDelete(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy('category_index')
 
 class GoalDetail(LoginRequiredMixin,DetailView):
-    model = Goal
+    model = User
     template_name = 'goal/goal.html'
 
 class GoalCreate(LoginRequiredMixin,CreateView):
