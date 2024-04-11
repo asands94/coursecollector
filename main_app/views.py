@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
-from .models import Course, Category, Goal, User, Note
+from .models import Course, Category, Profile, User, Note
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import GoalForm, NoteForm
+from .forms import ProfileForm, NoteForm
 
 # Create your views here.
 def home(request):
@@ -114,30 +114,30 @@ class CategoryDelete(LoginRequiredMixin,DeleteView):
     # https://docs.djangoproject.com/en/5.0/ref/urlresolvers/#reverse-lazy
     success_url = reverse_lazy('category_index')
 
-class GoalDetail(LoginRequiredMixin,DetailView):
+class ProfileDetail(LoginRequiredMixin,ListView):
     model = User
-    template_name = 'goal/goal.html'
+    template_name = 'profile/profile.html'
 
-class GoalCreate(LoginRequiredMixin,CreateView):
-    model = Goal
-    template_name = 'goal/goal_form.html'
+class ProfileCreate(LoginRequiredMixin,CreateView):
+    model = Profile
+    template_name = 'profile/profile_form.html'
     # https://docs.djangoproject.com/en/5.0/topics/class-based-views/generic-editing/
-    form_class = GoalForm
+    form_class = ProfileForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
     
     def get_success_url(self):
-        return reverse_lazy('goal', kwargs={'pk': self.request.user.pk})
+        return reverse_lazy('profile', kwargs={'pk': self.request.user.pk})
 
-class GoalUpdate(LoginRequiredMixin,UpdateView):
-    model = Goal
-    template_name = 'goal/goal_form.html'
-    form_class = GoalForm
+class ProfileUpdate(LoginRequiredMixin,UpdateView):
+    model = Profile
+    template_name = 'profile/profile_form.html'
+    form_class = ProfileForm
 
     def get_success_url(self):
-        return reverse_lazy('goal', kwargs={'pk': self.request.user.pk})
+        return reverse_lazy('profile', kwargs={'pk': self.request.user.pk})
 
 class NoteUpdate(LoginRequiredMixin,UpdateView):
     model = Note
@@ -150,3 +150,4 @@ class NoteDelete(LoginRequiredMixin,DeleteView):
     
     def get_success_url(self):
         return reverse_lazy('course_detail', kwargs={'pk': self.object.courses.pk})
+    

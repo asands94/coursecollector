@@ -1,9 +1,9 @@
 from django import forms
-from .models import Goal, Note
+from .models import Profile, Note
 
-class GoalForm(forms.ModelForm):
+class ProfileForm(forms.ModelForm):
     class Meta:
-        model = Goal
+        model = Profile
         fields = ['name']
 
 class NoteForm(forms.ModelForm):

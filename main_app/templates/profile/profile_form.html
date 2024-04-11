@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %} {% if user.profile.name %}
+<h1>
+  <span class="yellow-text text-darken-3"
+    ><a href="{% url 'profile'%}">View Your Profile</a></span
+  >
+</h1>
+{% else %}
+<h1>Add Goal</h1>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <input type="submit" value="Submit" class="btn yellow darken-3" />
+</form>
+{% endif %} {% endblock %}
