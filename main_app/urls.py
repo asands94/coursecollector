@@ -15,9 +15,10 @@ urlpatterns = [
     path('category/<int:pk>/update/', views.CategoryUpdate.as_view(), name='category_update'),
     path('category/<int:pk>/delete/', views.CategoryDelete.as_view(), name='category_delete'),
 
-    path('accounts/<int:pk>/goal', views.GoalDetail.as_view(), name='goal'),
-    path('accounts/<int:pk>/goal/create/', views.GoalCreate.as_view(), name='goal_create'),
-    path('accounts/<int:pk>/goal/update/', views.GoalUpdate.as_view(), name='goal_update'),
+    path('accounts/<int:pk>', views.GoalDetail.as_view(), name='goal'),
+    
+    path('goal/create/', views.GoalCreate.as_view(), name='goal_create'),
+    path('goal/<int:pk>/update/', views.GoalUpdate.as_view(), name='goal_update'),
 
     path('course/<int:pk>/add_note', views.CourseDetail.as_view(), name='add_note'),
     path('note/<int:pk>/update/', views.NoteUpdate.as_view(), name='note_update'),
