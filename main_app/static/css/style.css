@@ -10,16 +10,9 @@ main {
 }
 
 footer.page-footer {
-  padding-top: 0;
+  margin-top: 10px;
+  padding-top: 0px;
   text-align: right;
-}
-
-li > span {
-  color: #0277bd !important;
-}
-
-input:focus {
-  border-bottom-color: #0277bd !important;
 }
 
 .detail-card, .profile-card, .category-card {
