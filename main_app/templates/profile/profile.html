@@ -6,7 +6,7 @@
   <div class="col s3">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">Account Settings</span>
+        <p class="card-title">Account Settings</p>
         <hr />
         <p><a href="{% url 'change_username' user.id %}">Update username</a></p>
         <p><a href="{% url 'change_password' user.id %}">Update password</a></p>
@@ -22,7 +22,7 @@
   <div class="col s9">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">Courses with Recurring Fees</span>
+        <p class="card-title">Courses with Recurring Fees</p>
         <hr />
         {% for course in user.course_set.all%} 
           {% if course.recurring_fee == 'Y' %}
