@@ -11,8 +11,8 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def home(request):
-    courses = Course.objects.filter(user=request.user)
-    return render(request, 'home.html', {'courses':courses})
+
+    return render(request, 'home.html')
 
 def signup(request):
   error_message = ''
