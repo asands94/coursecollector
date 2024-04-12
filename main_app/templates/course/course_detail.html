@@ -30,7 +30,7 @@
   <div class="col s6">
     <form method="POST" action="{%url 'add_note' course.id %}">
       {%csrf_token%} {{note_form.as_p}}
-      <input type="submit" class="btn yellow darken-3" value="Add Note" />
+      <input type="submit" class="btn light-green lighten-2" value="Add Note" />
     </form>
     {% if course.note_set.all %}
  

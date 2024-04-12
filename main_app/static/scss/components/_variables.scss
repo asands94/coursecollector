@@ -34,14 +34,14 @@
 // 1. Colors
 // ==========================================================================
 
-$primary-color: color("blue", "darken-3") !default;
+$primary-color: color("brown", "lighten-1") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color("yellow", "darken-3") !default;
+$secondary-color: color("light-green", "lighten-2") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
-$link-color: color("blue", "darken-3") !default;
+$link-color: color("grey", 'darken-4') !default;
 
 
 // 2. Badges
@@ -101,7 +101,7 @@ $button-floating-radius: 50% !default;
 
 $card-padding: 24px !default;
 $card-bg-color: #fff !default;
-$card-link-color: color("orange", "accent-2") !default;
+$card-link-color: darken($secondary-color, 30%) !default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
 
 
@@ -155,7 +155,7 @@ $timepicker-clock-plate-bg: #eee !default;
 
 $dropdown-bg-color: #fff !default;
 $dropdown-hover-bg-color: #eee !default;
-$dropdown-color: $secondary-color !default;
+$dropdown-color: $primary-color !default;
 $dropdown-item-height: 50px !default;
 
 
