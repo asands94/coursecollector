@@ -50,10 +50,10 @@ class CourseList(LoginRequiredMixin,ListView):
         return context
     
     def category_query(self, request):
-        q = request.GET.get('q')
-        if q:
+        category = request.GET.get('category')
+        if category:
             # find the category by name
-            category_obj = get_object_or_404(Category, name=q)
+            category_obj = get_object_or_404(Category, name=category)
             return Course.objects.filter(category=category_obj.pk)
         else:
             return Course.objects.all()
