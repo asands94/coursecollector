@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col s3">
     <a
-      class="dropdown-trigger btn blue darken-3"
+      class="dropdown-trigger btn"
       href="#"
       data-target="dropdown1"
       >Filter by Category</a
@@ -12,7 +12,7 @@
     <ul class="dropdown-content" id="dropdown1">
       {% for category in categories %}
       <li>
-        <a href="?q={{category.name}}" class="blue-text text-darken-3"
+        <a href="?q={{category.name}}" class=""
           >{{category.name}}</a
         >
       </li>

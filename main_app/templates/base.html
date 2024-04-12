@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Course Collector</title>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+    /> -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -19,6 +19,12 @@
       type="text/css"
       href="{% static 'css/style.css' %}"
     />
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'scss/materialize.css' %}"
+    media="screen,projection"
+  />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
   <body>
@@ -28,13 +34,13 @@
         <li>
           <a
             href="{% url 'course_create' %}"
-            class="blue-text text-darken-3"
+            class=""
             >Add Course</a
           >
         </li>
         <li class="divider"></li>
         <li>
-          <a href="{% url 'course_index' %}" class="blue-text text-darken-3"
+          <a href="{% url 'course_index' %}" class=""
             >All Courses</a
           >
         </li>
@@ -43,43 +49,41 @@
         <li>
           <a
             href="{% url 'category_create' %}"
-            class="blue-text text-darken-3"
+            class=""
             >Add Category</a>
         </li>
         <li class="divider"></li>
         <li>
-          <a href="{% url 'category_index' %}" class="blue-text text-darken-3"
+          <a href="{% url 'category_index' %}" class=""
             >All Categories</a
           >
         </li>
       </ul>
       {% endif %}
-      <nav>
-        <div class="nav-wrapper white">
-          <a href="{% url 'home' %}" class="brand-logo blue-text text-darken-3">&nbsp;&nbsp;Course Collector</a>
+      <nav class="">
+        <div class="nav-wrapper">
+          <a href="{% url 'home' %}" class="brand-logo">&nbsp;&nbsp;Course Collector</a>
           <a href="#" data-target="mobile" class="sidenav-trigger"
-          ><i class="material-icons blue-text text-darken-3">menu</i></a
+          ><i class="material-icons ">menu</i></a
         >
           <ul class="right hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
             <!-- Dropdown Trigger -->
-            <li><a class="dropdown-trigger blue-text text-darken-3" href="#!" data-target="dropdown2">Courses<i class="material-icons right">arrow_drop_down</i></a></li>
-            <li><a class="dropdown-trigger blue-text text-darken-3" href="#!" data-target="dropdown3">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger " href="#!" data-target="dropdown2">Courses<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger " href="#!" data-target="dropdown3">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
             {% if not user.is_authenticated %}
             <li>
-              <a href="{% url 'signup' %}" class="blue-text text-darken-3"
+              <a href="{% url 'signup' %}" class=""
                 >Sign Up</a
               >
             </li>
             <li>
-              <a href="{% url 'login' %}" class="blue-text text-darken-3"
+              <a href="{% url 'login' %}" class=""
                 >Log In</a
               >
             </li>
             {% else %}
             <li>
-              <a href="{% url 'profile'%}" class="blue-text text-darken-3"
+              <a href="{% url 'profile'%}" class="$link-color-text text-darken-3"
                 >Profile</a
               >
             </li>
@@ -101,27 +105,27 @@
       <ul class="sidenav" id="mobile">
         {% if user.is_authenticated %}
         <li>
-          <a href="{% url 'course_create' %}" class="blue-text text-darken-3"
+          <a href="{% url 'course_create' %}" class=""
             >Add Course</a
           >
         </li>
         <li>
-          <a href="{% url 'course_index' %}" class="blue-text text-darken-3"
+          <a href="{% url 'course_index' %}" class=""
             >All Courses</a
           >
         </li>
         <li>
-          <a href="{% url 'category_create' %}" class="blue-text text-darken-3"
+          <a href="{% url 'category_create' %}" class=""
             >Add Category</a
           >
         </li>
         <li>
-          <a href="{% url 'category_index' %}" class="blue-text text-darken-3"
+          <a href="{% url 'category_index' %}" class=""
             >All Categories</a
           >
         </li>
         <li>
-          <a href="{% url 'profile' %}" class="blue-text text-darken-3"
+          <a href="{% url 'profile' %}" class=""
             >Profile</a
           >
         </li>
@@ -141,7 +145,7 @@
       </ul>
     </header>
     <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer blue darken-3">
+    <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col l6 s6">
