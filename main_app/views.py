@@ -11,7 +11,8 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    courses = Course.objects.filter(user=request.user)
+    return render(request, 'home.html', {'courses':courses})
 
 def signup(request):
   error_message = ''
@@ -33,6 +34,7 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 class CourseList(LoginRequiredMixin,ListView):
+    paginate_by = 5
     model = Course
     template_name = 'course/course_list.html'
 
