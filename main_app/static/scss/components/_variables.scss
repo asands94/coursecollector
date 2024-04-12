@@ -100,7 +100,7 @@ $button-floating-radius: 50% !default;
 // ==========================================================================
 
 $card-padding: 24px !default;
-$card-bg-color: #fff !default;
+$card-bg-color: color('brown', 'lighten-5') !default;
 $card-link-color: darken($secondary-color, 30%) !default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
 
@@ -153,7 +153,7 @@ $timepicker-clock-plate-bg: #eee !default;
 // 9. Dropdown
 // ==========================================================================
 
-$dropdown-bg-color: #fff !default;
+$dropdown-bg-color: color('brown', 'lighten-5') !default;
 $dropdown-hover-bg-color: #eee !default;
 $dropdown-color: $primary-color !default;
 $dropdown-item-height: 50px !default;
@@ -242,7 +242,7 @@ $element-bottom-margin: ($gutter-width*2)/3 !default;
 // 13. Navigation Bar
 // ==========================================================================
 
-$navbar-background-color: color('grey', 'lighten-5') !default;
+$navbar-background-color: color('brown', 'lighten-5') !default;
 $navbar-height: 64px !default;
 $navbar-line-height: $navbar-height !default;
 $navbar-height-mobile: 56px !default;

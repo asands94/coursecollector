@@ -2,7 +2,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: #fafafa;
+  background-color: #ffffff;
 }
 
 main {
@@ -20,4 +20,8 @@ li > span {
 
 input:focus {
   border-bottom-color: #0277bd !important;
+}
+
+.detail-card, .profile-card, .category-card {
+  border: 1px solid #efebe9;
 }
