@@ -43,7 +43,7 @@ class CourseList(LoginRequiredMixin,ListView):
      # pass in categories to template
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        categories = Category.objects.all()
+        categories = Category.objects.filter(user=self.request.user)
         context['categories'] = categories
         return context
     
