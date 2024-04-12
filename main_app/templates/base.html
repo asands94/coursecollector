@@ -23,42 +23,61 @@
   </head>
   <body>
     <header class="navbar">
+      {% if user.is_authenticated %}
+      <ul id="dropdown2" class="dropdown-content">
+        <li>
+          <a
+            href="{% url 'course_create' %}"
+            class="blue-text text-darken-3"
+            >Add a Course</a
+          >
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="{% url 'course_index' %}" class="blue-text text-darken-3"
+            >All Courses</a
+          >
+        </li>
+      </ul>
+      <ul id="dropdown3" class="dropdown-content">
+        <li>
+          <a
+            href="{% url 'category_create' %}"
+            class="blue-text text-darken-3"
+            >Add a Category</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="{% url 'category_index' %}" class="blue-text text-darken-3"
+            >All Categories</a
+          >
+        </li>
+      </ul>
+      {% endif %}
       <nav>
         <div class="nav-wrapper white">
-          <a href="{% url 'home' %}" class="brand-logo blue-text text-darken-3"
-            >&nbsp;&nbsp;Course Collector</a
-          >
+          <a href="{% url 'home' %}" class="brand-logo blue-text text-darken-3">&nbsp;&nbsp;Course Collector</a>
           <a href="#" data-target="mobile" class="sidenav-trigger"
-            ><i class="material-icons blue-text text-darken-3">menu</i></a
-          >
+          ><i class="material-icons blue-text text-darken-3">menu</i></a
+        >
           <ul class="right hide-on-med-and-down">
-            {% if user.is_authenticated %}
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-trigger blue-text text-darken-3" href="#!" data-target="dropdown2">Courses<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger blue-text text-darken-3" href="#!" data-target="dropdown3">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+            {% if not user.is_authenticated %}
             <li>
-              <a
-                href="{% url 'course_create' %}"
-                class="blue-text text-darken-3"
-                >Add a Course</a
+              <a href="{% url 'signup' %}" class="blue-text text-darken-3"
+                >Sign Up</a
               >
             </li>
             <li>
-              <a href="{% url 'course_index' %}" class="blue-text text-darken-3"
-                >All Courses</a
+              <a href="{% url 'login' %}" class="blue-text text-darken-3"
+                >Log In</a
               >
             </li>
-            <li>
-              <a
-                href="{% url 'category_create' %}"
-                class="blue-text text-darken-3"
-                >Add a Category</a
-              >
-            </li>
-            <li>
-              <a
-                href="{% url 'category_index' %}"
-                class="blue-text text-darken-3"
-                >All Categories</a
-              >
-            </li>
+            {% else %}
             <li>
               <a href="{% url 'profile'%}" class="blue-text text-darken-3"
                 >Profile</a
@@ -74,22 +93,11 @@
                 />&nbsp;&nbsp;
               </form>
             </li>
-            {% else %}
-            <li>
-              <a href="{% url 'signup' %}" class="blue-text text-darken-3"
-                >Sign Up</a
-              >
-            </li>
-            <li>
-              <a href="{% url 'login' %}" class="blue-text text-darken-3"
-                >Log In</a
-              >
-            </li>
             {% endif %}
           </ul>
         </div>
       </nav>
-
+<!-- MOBILE NAVBAR -->
       <ul class="sidenav" id="mobile">
         {% if user.is_authenticated %}
         <li>
@@ -163,5 +171,12 @@
   document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.sidenav')
     var instances = M.Sidenav.init(elems, {})
+  })
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.dropdown-trigger')
+    var instances = M.Dropdown.init(elems, {
+      coverTrigger: false,
+    })
   })
 </script>
