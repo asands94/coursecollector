@@ -1,20 +1,18 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Edit <span class="">Note</span></h1>
+    <h1>Edit <span class="">Note</span></h1>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+         </table> 
+      <input type="submit" value="Submit" class="btn light-green lighten-2">
+    </form>
 
-<form action="" method="POST">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <input type="submit" value="Submit" class="btn light-green lighten-2" />
-</form>
 
 <script>
-  const dateEl = document.getElementById('id_date')
-  M.Datepicker.init(dateEl, {
+  const formDateEl = document.getElementById('id_date')
+  M.Datepicker.init(formDateEl, {
     format: 'yyyy-mm-dd',
-    defaultDate: new Date(),
-    setDefaultDate: true,
     autoClose: true,
   })
 </script>

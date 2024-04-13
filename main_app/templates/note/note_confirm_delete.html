@@ -1,14 +1,24 @@
-{% extends 'base.html' %} {% block content %}
-<h1>Delete Note</h1>
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h1>Delete Note</h1>
 
-<h4>
-  Are you sure you want to delete
-  <span class="">this note</span>?
-</h4>
+    <h4>
+      Are you sure you want to delete
+      <span class="">this note</span>?
+    </h4>
 
-<form action="" method="POST">
-  {% csrf_token %}
-  <input type="submit" value="Yes - Delete!" class="btn light-green lighten-2" />
-  <a href="{% url 'course_detail' object.courses.id %}">Cancel</a>
-</form>
-{% endblock %}
+    <form action="{% url 'note_delete' note.id %}" method="POST">
+      {% csrf_token %}
+      <input
+        type="submit"
+        value="Yes - Delete!"
+        class="btn light-green lighten-2"
+      />
+      <a href="{% url 'course_detail' course.id %}" class="grey-text text-darken-4">Cancel</a>
+    </form>
+  </div>
+</div>
+<script>
+  const noteDelete = document.querySelectorAll('.modal')
+  const noteDeleteInstances = M.Modal.init(noteDelete, {})
+</script>

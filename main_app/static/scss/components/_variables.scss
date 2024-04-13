@@ -101,7 +101,7 @@ $button-floating-radius: 50% !default;
 
 $card-padding: 24px !default;
 $card-bg-color: color('brown', 'lighten-5') !default;
-$card-link-color: darken($secondary-color, 30%) !default;
+$card-link-color: $secondary-color!default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
 
 

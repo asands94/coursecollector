@@ -7,7 +7,7 @@
     <div class="card detail-card white">
       <div class="card-content">
         {% if course.image %}
-        <img src="{{course.image}}" loading="lazy" class="responsive-img" />
+        <img src="{{course.image}}" loading="lazy" class="responsive-img" alt="{{course.name}}"/>
         {% endif %}
         <p>{{course.description}}</p>
         <p>Rating: {{course.get_rating_display}}</p>
@@ -21,9 +21,12 @@
         </p>
       </div>
       <div class="card-action">
-        <a href="{{course.url}}" target="_blank">Visit</a>
-        <a href="{% url 'course_update' course.id %}">Edit</a>
-        <a href="{% url 'course_delete' course.id %}">Delete</a>
+        <a href="{{course.url}}" target="_blank"><i class="small material-icons">language</i></a>
+        <a href="{% url 'course_update' course.id %}"><i class="small material-icons">edit</i></a>
+        <!-- modal trigger -->
+        <a href="#modal1" class="modal-trigger"><i class="small material-icons">delete</i></a>
+        <!-- modal -->
+        {% include 'course/course_confirm_delete.html' %}
       </div>
     </div>
   </div>
@@ -32,6 +35,10 @@
       {%csrf_token%} {{note_form.as_p}}
       <input type="submit" class="btn light-green lighten-2" value="Add Note" />
     </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
     {% if course.note_set.all %}
  
     <table class="striped card">
@@ -39,22 +46,28 @@
         <tr>
           <th>Date</th>
           <th>Note</th>
+          <!-- <th>Actions</th> -->
         </tr>
       </thead>
       <tbody>
-        <!-- <div class="card"> -->
         {% for note in course.note_set.all %}
         <tr>
           <td>{{note.date}}</td>
           <td>{{note.content}}</td>
-          <td><a href="{% url 'note_update' note.id %}">Edit</a></td>
-          <td><a href="{% url 'note_delete' note.id %}">Delete</a></td>
+          <td>
+            <a href="{% url 'note_update' note.id %}" class="modal-trigger"><i class="small material-icons">edit</i></a>
+            <!-- modal trigger -->
+            <a href="#modal2" class="modal-trigger"><i class="small material-icons">delete</i></a>
+          </td>
+          <!-- modal -->
+          {% include "note/note_confirm_delete.html" %}
         </tr>
         {% endfor %}
-      <!-- </div> -->
+      
       </tbody>
     </table>
     {% endif %}
+    
   </div>
 </div>
 

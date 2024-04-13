@@ -4564,13 +4564,13 @@ small {
   border-radius: 0 0 2px 2px;
 }
 .card .card-action a:not(.btn):not(.btn-small):not(.btn-large):not(.btn-large):not(.btn-floating) {
-  color: #628e2f;
+  color: #aed581;
   margin-right: 24px;
   transition: color 0.3s ease;
   text-transform: uppercase;
 }
 .card .card-action a:not(.btn):not(.btn-small):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
-  color: #95c85b;
+  color: #dfefce;
 }
 .card .card-reveal {
   padding: 24px;

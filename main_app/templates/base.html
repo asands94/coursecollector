@@ -172,15 +172,12 @@
   </body>
 </html>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.sidenav')
-    var instances = M.Sidenav.init(elems, {})
-  })
+    const elems = document.querySelectorAll('.sidenav')
+    const instances = M.Sidenav.init(elems, {})
 
-  document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.dropdown-trigger')
-    var instances = M.Dropdown.init(elems, {
+    const trigger = document.querySelectorAll('.dropdown-trigger')
+    const triggerInstances = M.Dropdown.init(trigger, {
       coverTrigger: false,
     })
-  })
+
 </script>
