@@ -68,8 +68,10 @@
         >
           <ul class="right hide-on-med-and-down">
             <!-- Dropdown Trigger -->
+            {% if user.is_authenticated %}
             <li><a class="dropdown-trigger " href="#!" data-target="dropdown2">Courses<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a class="dropdown-trigger " href="#!" data-target="dropdown3">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+            {% endif %}
             {% if not user.is_authenticated %}
             <li>
               <a href="{% url 'signup' %}" class=""
