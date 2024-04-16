@@ -1,6 +1,6 @@
 # Course Tracker
-##### A Django application where authenticated users can input courses they've purchased so they can keep track of them all in one place.
-##### [The project is deployed here](https://coursetracker-9cf43033d5b8.herokuapp.com/)
+#### A Django application where authenticated users can input courses they've purchased so they can keep track of them all in one place.
+#### [The project is deployed here](https://coursetracker-9cf43033d5b8.herokuapp.com/)
 
 # Screenshot
 
