@@ -3,16 +3,16 @@ A Django application where authenticated users can input courses they've purchas
 
 # Screenshot
 
-<img src="url to your image on imgur">
-<img src="url to your image on imgur">
+<img src="https://i.imgur.com/EFfHs60.gif">
 
 # Technologies Used
 
 - Django
+- Python
 - HTML
 - CSS
 - Sass
-- Materialize
+- [Materialize](https://materializecss.com/getting-started.html)
 
 # Getting Started
 
