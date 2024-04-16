@@ -12,15 +12,15 @@
 
 # Technologies Used
 
-- Django
-- Python
+- Django (Python)
 - HTML
 - CSS
 - Sass
-- [Materialize](https://materializecss.com/getting-started.html)
+- [Materialize CSS](https://materializecss.com/getting-started.html)
 
 
 # Next Steps
 
 - [ ] Use AWS for image uploads
 - [ ] More fleshed out home page for non authenticated users
+- [ ] More detailed profile page to provide a quick glance certain course information
