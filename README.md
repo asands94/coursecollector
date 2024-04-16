@@ -5,7 +5,7 @@ A Django application where authenticated users can input courses they've purchas
 
 <div align="center">
   <pre>
-   <img src="https://i.imgur.com/RWEXMsf.png" height="500" />&nbsp;&nbsp;&nbsp;<img src="https://i.imgur.com/7u7Bbr6.png" height="500"/>
+   <img src="https://i.imgur.com/RWEXMsf.png" />&nbsp;&nbsp;&nbsp;<img src="https://i.imgur.com/7u7Bbr6.png"/>
   </pre>
 </div>
 
