@@ -3,7 +3,8 @@ A Django application where authenticated users can input courses they've purchas
 
 # Screenshot
 
-<img src="https://i.imgur.com/EFfHs60.gif">
+<img src="https://i.imgur.com/RWEXMsf.png">
+<img src="https://i.imgur.com/7u7Bbr6.png">
 
 # Technologies Used
 
