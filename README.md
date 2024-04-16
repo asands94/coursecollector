@@ -1,5 +1,6 @@
 # Course Tracker
-A Django application where authenticated users can input courses they've purchased so they can keep track of them all in one place.
+##### A Django application where authenticated users can input courses they've purchased so they can keep track of them all in one place.
+##### [The project is deployed here](https://coursetracker-9cf43033d5b8.herokuapp.com/)
 
 # Screenshot
 
@@ -18,10 +19,8 @@ A Django application where authenticated users can input courses they've purchas
 - Sass
 - [Materialize](https://materializecss.com/getting-started.html)
 
-# Getting Started
-
-[Click to view the website](https://coursetracker-9cf43033d5b8.herokuapp.com/)
 
 # Next Steps
 
-- Add image upload to the courses so users are not limited to using images that are hosted online
+- [ ] Use AWS for image uploads
+- [ ] More fleshed out home page for non authenticated users
